@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
+
 
 namespace tic_tac_toe
 {
@@ -22,43 +22,40 @@ namespace tic_tac_toe
             {
                 wasPressed[i] = false;
             }
-            Button[] ButtonArray = Controls
+            ButtonArray = Controls
             .OfType<Button>()
             .ToArray();
+            Array.Reverse(ButtonArray);
+            foreach  (Button button in ButtonArray)
+            {
+                button.Text = (Convert.ToString(i++));
+            }
         }
         int turn = 0;
-        bool[] wasPressed = new bool[5];
-        
-        
-        string ButtonText()
+        bool[] wasPressed = new bool[9];
+        Button[] ButtonArray;
+
+
+        void ButtonText(int btn)
         {
             
             {
-                turn++;
-                if (turn % 2 == 0)
-                    return "O";
-                else
-                    return "X";
+                if (wasPressed[btn - 1]==false)
+                {
+                    wasPressed[btn - 1] = true;
+                    if(turn%2==0)
+                        ButtonArray[btn - 1].Text = "X";
+                    else
+                        ButtonArray[btn - 1].Text = "O";
+                    turn++;
+                }
 
             }
            
         }
         
         
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            if (wasPressed[0] == false)
-            {
-                button1.Text = ButtonText();
-                wasPressed[0] = true;
-            }
-           
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
 
 
@@ -74,8 +71,49 @@ namespace tic_tac_toe
 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ButtonText(1);
+        }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ButtonText(2);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ButtonText(3);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ButtonText(4);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ButtonText(5);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ButtonText(6);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ButtonText(7);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ButtonText(8);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ButtonText(9);
+        }
     }
 }
