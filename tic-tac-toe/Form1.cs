@@ -34,6 +34,7 @@ namespace tic_tac_toe
         int turn = 0;
         bool[] wasPressed = new bool[9];
         Button[] ButtonArray;
+        int gameCount = 1;
 
 
         void ButtonAction(int btn)
@@ -99,7 +100,7 @@ namespace tic_tac_toe
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            GameCountLabel.Text = "GAME:\n    " + Convert.ToString(gameCount);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -153,7 +154,20 @@ namespace tic_tac_toe
 
         private void winnerLabel_Click(object sender, EventArgs e)
         {
-
+            turn = 0;
+            int i = 0;
+            foreach (Button button in ButtonArray)
+            {
+                button.Text = (Convert.ToString(i++));
+            }
+            for(int j=0; j< wasPressed.Length;j++)
+            {
+                wasPressed[j] = false;
+            }
+            winnerLabel.Visible = false;
+            gameCount++;
+            GameCountLabel.Text = "GAME:\n     "+Convert.ToString(gameCount);
+            timer1.Start();
         }
     }
 }
