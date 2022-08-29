@@ -35,13 +35,13 @@ namespace tic_tac_toe
         bool[] wasPressed = new bool[9];
         Button[] ButtonArray;
         int gameCount = 1;
-
+        int winsX, winsO = 0;
 
         void ButtonAction(int btn)
         {
             
             {
-                if (wasPressed[btn - 1]==false)
+                if (wasPressed[btn - 1]==false && timer1.Enabled==true)
                 {
                     wasPressed[btn - 1] = true;
                     if(turn%2==0)
@@ -49,42 +49,64 @@ namespace tic_tac_toe
                     else
                         ButtonArray[btn - 1].Text = "O";
                     turn++;
+                    string winner = CheckWin();
+                    WriteWinner(winner);
                 }
-                CheckWin();
+               
             }
            
         }
-        void CheckWin()
+        string CheckWin()
         {
             for (int j = 0; j <7; j+=3)
                 if (ButtonArray[j+1].Text== ButtonArray[j].Text && ButtonArray[j+2].Text== ButtonArray[j].Text)
                 {
-                    WriteWinner(j);
+                   return ButtonArray[j].Text;
                     
                 }
            for(int j=0; j<3; j++)
             {
                 if (ButtonArray[j].Text == ButtonArray[j+3].Text && ButtonArray[j].Text == ButtonArray[j+6].Text)
                 {
-                    WriteWinner(j);
+                    return ButtonArray[j].Text;
                 }
             }
             if (ButtonArray[0].Text == ButtonArray[4].Text && ButtonArray[0].Text == ButtonArray[8].Text)
             {
-                WriteWinner(0);
+                return ButtonArray[0].Text;
             }
             else if (ButtonArray[2].Text == ButtonArray[4].Text && ButtonArray[2].Text == ButtonArray[6].Text)
             {
-                WriteWinner(2);
+                return ButtonArray[2].Text;
             }
+            else
+                return null;
         }
-        void WriteWinner(int j)
+        void UpdateWinnerCount (string winner)
         {
-            timer1.Stop();
-            Console.WriteLine(ButtonArray[j].Text + " Wins");
-            winnerLabel.Text = "WINNER: " + ButtonArray[j].Text;
-            winnerLabel.Visible = true;
-            return;
+            if (winner == "X")
+            {
+                winsX += 1;
+                xWinCount.Text = Convert.ToString(winsX);
+            }
+            else if (winner == "O")
+            {
+                winsO += 1;
+                oWinCount.Text = Convert.ToString(winsO);
+            }
+            
+        }
+        void WriteWinner(string winner)
+        {
+            if (winner != null)
+            {
+                timer1.Stop();
+                Console.WriteLine(winner + " Wins");
+                winnerLabel.Text = "WINNER: " + winner;
+                winnerLabel.Visible = true;
+                UpdateWinnerCount(winner);
+                return;
+            }
         }
         
 

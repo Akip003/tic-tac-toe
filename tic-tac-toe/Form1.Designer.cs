@@ -42,6 +42,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.winnerLabel = new System.Windows.Forms.Label();
             this.GameCountLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.oWinCount = new System.Windows.Forms.Label();
+            this.xWinCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
@@ -173,11 +178,66 @@
             this.GameCountLabel.TabIndex = 11;
             this.GameCountLabel.Text = "label2";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(86, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 25);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "WINS";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(86, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 25);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "X";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(123, 137);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 25);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "O";
+            // 
+            // oWinCount
+            // 
+            this.oWinCount.AutoSize = true;
+            this.oWinCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.oWinCount.Location = new System.Drawing.Point(125, 168);
+            this.oWinCount.Name = "oWinCount";
+            this.oWinCount.Size = new System.Drawing.Size(23, 25);
+            this.oWinCount.TabIndex = 15;
+            this.oWinCount.Text = "0";
+            // 
+            // xWinCount
+            // 
+            this.xWinCount.AutoSize = true;
+            this.xWinCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.xWinCount.Location = new System.Drawing.Point(87, 168);
+            this.xWinCount.Name = "xWinCount";
+            this.xWinCount.Size = new System.Drawing.Size(23, 25);
+            this.xWinCount.TabIndex = 16;
+            this.xWinCount.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 445);
+            this.Controls.Add(this.xWinCount);
+            this.Controls.Add(this.oWinCount);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.GameCountLabel);
             this.Controls.Add(this.winnerLabel);
             this.Controls.Add(this.label1);
@@ -214,6 +274,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label winnerLabel;
         private System.Windows.Forms.Label GameCountLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label oWinCount;
+        private System.Windows.Forms.Label xWinCount;
     }
 }
 
