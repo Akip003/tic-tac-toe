@@ -47,6 +47,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.oWinCount = new System.Windows.Forms.Label();
             this.xWinCount = new System.Windows.Forms.Label();
+            this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -157,9 +158,12 @@
             // 
             // winnerLabel
             // 
+            this.winnerLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.winnerLabel.AutoSize = true;
+            this.winnerLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.winnerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.winnerLabel.Location = new System.Drawing.Point(208, 180);
+            this.winnerLabel.MinimumSize = new System.Drawing.Size(385, 76);
             this.winnerLabel.Name = "winnerLabel";
             this.winnerLabel.Size = new System.Drawing.Size(385, 76);
             this.winnerLabel.TabIndex = 10;
@@ -192,6 +196,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
             this.label3.Location = new System.Drawing.Point(86, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 25);
@@ -202,6 +207,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label4.Location = new System.Drawing.Point(123, 137);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 25);
@@ -212,6 +218,7 @@
             // 
             this.oWinCount.AutoSize = true;
             this.oWinCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.oWinCount.ForeColor = System.Drawing.SystemColors.Highlight;
             this.oWinCount.Location = new System.Drawing.Point(125, 168);
             this.oWinCount.Name = "oWinCount";
             this.oWinCount.Size = new System.Drawing.Size(23, 25);
@@ -222,17 +229,32 @@
             // 
             this.xWinCount.AutoSize = true;
             this.xWinCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.xWinCount.ForeColor = System.Drawing.Color.OrangeRed;
             this.xWinCount.Location = new System.Drawing.Point(87, 168);
             this.xWinCount.Name = "xWinCount";
             this.xWinCount.Size = new System.Drawing.Size(23, 25);
             this.xWinCount.TabIndex = 16;
             this.xWinCount.Text = "0";
             // 
+            // resetButton
+            // 
+            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.resetButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.resetButton.Location = new System.Drawing.Point(81, 197);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 17;
+            this.resetButton.Text = "RESET";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 445);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.xWinCount);
             this.Controls.Add(this.oWinCount);
             this.Controls.Add(this.label4);
@@ -279,6 +301,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label oWinCount;
         private System.Windows.Forms.Label xWinCount;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 

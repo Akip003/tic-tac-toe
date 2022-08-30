@@ -16,9 +16,19 @@ namespace tic_tac_toe
         public Form1()
         {
             InitializeComponent();
-            
+            ButtonWriteNumber();
+
+
+        }
+        int turn = 0;
+        bool[] wasPressed = new bool[9];
+        Button[] ButtonArray;
+        int gameCount = 1;
+        int winsX, winsO = 0;
+        void ButtonWriteNumber ()
+        {
             int i = 0;
-            while(i>wasPressed.Length)
+            while (i > wasPressed.Length)
             {
                 wasPressed[i] = false;
             }
@@ -26,17 +36,11 @@ namespace tic_tac_toe
             .OfType<Button>()
             .ToArray();
             Array.Reverse(ButtonArray);
-            foreach  (Button button in ButtonArray)
+            for (int j = 0; j < 9; j++)
             {
-                button.Text = (Convert.ToString(i++));
+                ButtonArray[j].Text = (Convert.ToString(j + 1));
             }
         }
-        int turn = 0;
-        bool[] wasPressed = new bool[9];
-        Button[] ButtonArray;
-        int gameCount = 1;
-        int winsX, winsO = 0;
-
         void ButtonAction(int btn)
         {
             
@@ -79,8 +83,10 @@ namespace tic_tac_toe
             {
                 return ButtonArray[2].Text;
             }
-            else
-                return null;
+            else if (turn == 9)
+                return "DRAW";
+
+            return null;
         }
         void UpdateWinnerCount (string winner)
         {
@@ -98,17 +104,43 @@ namespace tic_tac_toe
         }
         void WriteWinner(string winner)
         {
-            if (winner != null)
+            if(winner == "DRAW")
             {
+                timer1.Stop();
+                Console.WriteLine(winner);
+                winnerLabel.Text = winner;
+                winnerLabel.Visible = true;
+                return;
+            }
+            else if (winner != null)
+            {
+
+                if (winner == "X")
+                    winnerLabel.ForeColor = Color.OrangeRed;
+                else if (winner == "O")
+                    winnerLabel.ForeColor = Color.DeepSkyBlue;
                 timer1.Stop();
                 Console.WriteLine(winner + " Wins");
                 winnerLabel.Text = "WINNER: " + winner;
                 winnerLabel.Visible = true;
                 UpdateWinnerCount(winner);
-                return;
+                
             }
         }
-        
+        void ResetGame()
+        {
+            turn = 0;
+            ButtonWriteNumber();
+            for (int j = 0; j < wasPressed.Length; j++)
+            {
+                wasPressed[j] = false;
+            }
+            winnerLabel.Visible = false;
+            gameCount++;
+            GameCountLabel.Text = "GAME:\n     " + Convert.ToString(gameCount);
+            timer1.Start();
+
+        }
 
 
 
@@ -123,6 +155,25 @@ namespace tic_tac_toe
         private void Form1_Load(object sender, EventArgs e)
         {
             GameCountLabel.Text = "GAME:\n    " + Convert.ToString(gameCount);
+        }
+
+
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            winsO = 0;
+            winsX = 0;
+            gameCount = 0;
+            GameCountLabel.Text = "GAME:\n    " + Convert.ToString(gameCount);
+            xWinCount.Text = Convert.ToString(winsX);
+            oWinCount.Text = Convert.ToString(winsO);
+            ResetGame();
+           
+        }
+
+        private void winnerLabel_Click(object sender, EventArgs e)
+        {
+            ResetGame();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -168,28 +219,7 @@ namespace tic_tac_toe
         private void button9_Click(object sender, EventArgs e)
         {
             ButtonAction(9);
-            
-        }
 
-        
-
-
-        private void winnerLabel_Click(object sender, EventArgs e)
-        {
-            turn = 0;
-            int i = 0;
-            foreach (Button button in ButtonArray)
-            {
-                button.Text = (Convert.ToString(i++));
-            }
-            for(int j=0; j< wasPressed.Length;j++)
-            {
-                wasPressed[j] = false;
-            }
-            winnerLabel.Visible = false;
-            gameCount++;
-            GameCountLabel.Text = "GAME:\n     "+Convert.ToString(gameCount);
-            timer1.Start();
         }
     }
 }
